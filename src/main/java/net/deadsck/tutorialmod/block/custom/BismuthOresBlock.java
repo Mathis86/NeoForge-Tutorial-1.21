@@ -10,9 +10,9 @@ import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 
-public class BismuthOreBlock extends DropExperienceBlock {
+public class BismuthOresBlock extends DropExperienceBlock {
 
-    public BismuthOreBlock(IntProvider xpRange, Properties properties) {
+    public BismuthOresBlock(IntProvider xpRange, Properties properties) {
         super(xpRange, properties);
     }
 

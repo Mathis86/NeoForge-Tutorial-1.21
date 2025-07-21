@@ -1,7 +1,7 @@
 package net.deadsck.tutorialmod.block;
 
 import net.deadsck.tutorialmod.TutorialMod;
-import net.deadsck.tutorialmod.block.custom.BismuthOreBlock;
+import net.deadsck.tutorialmod.block.custom.BismuthOresBlock;
 import net.deadsck.tutorialmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -25,10 +25,17 @@ public class ModBlocks {
                     .sound(SoundType.AMETHYST)));
 
     public static final DeferredBlock<Block> BISMUTH_ORE = registerBlock("bismuth_ore",
-            () -> new BismuthOreBlock(UniformInt.of(2, 4), BlockBehaviour.Properties.of()
+            () -> new BismuthOresBlock(UniformInt.of(2, 4), BlockBehaviour.Properties.of()
                     .strength(4f)
                     .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE)
+            ));
 
+    public static final DeferredBlock<Block> BISMUTH_DEEPSLATE_ORE = registerBlock("bismuth_deepslate_ore",
+            () -> new BismuthOresBlock(UniformInt.of(4, 6), BlockBehaviour.Properties.of()
+                    .strength(5f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.DEEPSLATE)
             ));
 
 
