@@ -3,14 +3,8 @@ package net.deadsck.tutorialmod.item;
 import net.deadsck.tutorialmod.TutorialMod;
 import net.deadsck.tutorialmod.item.custom.ChiselItem;
 import net.deadsck.tutorialmod.item.custom.FrostFireIceItem;
-import net.deadsck.tutorialmod.item.custom.FuelItem;
 import net.deadsck.tutorialmod.item.custom.StarlightAshesItem;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -31,11 +25,11 @@ public class ModItems {
     // Voir les burn_time Vanilla : MAJ x2 > AbstractFurnaceBlockEntity
     // 1ère manière (FuelItem class)
     public static final DeferredItem<Item> FROSTFIRE_ICE = ITEMS.register("frostfire_ice",
-            () -> new FrostFireIceItem(new Item.Properties()));
+            () -> new FrostFireIceItem(new Item.Properties().food(ModFoodProperties.FROSTFIRE_ICE)));
 
     // 2ème manière (data/neoforge/data_maps/item)
     public static final DeferredItem<Item> STARLIGHT_ASHES = ITEMS.register("starlight_ashes",
-            () -> new StarlightAshesItem(new Item.Properties()));
+            () -> new StarlightAshesItem(new Item.Properties().food(ModFoodProperties.STARLIGHT_ASHES)));
 
     // == FOODS =================================================================================================
     public static final DeferredItem<Item> RADISH = ITEMS.register("radish",

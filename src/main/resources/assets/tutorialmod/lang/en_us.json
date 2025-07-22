@@ -13,6 +13,12 @@
   "block.tutorialmod.bismuth_deepslate_ore": "Bismuth Deepslate Ore",
   "block.tutorialmod.magic_block": "Magic Block",
 
+  "tooltip.tutorialmod.press_shift": "Press §eShift§r for more information",
+  "tooltip.tutorialmod.magic_block": "This block is very §9MAGICAL§r",
+  "tooltip.tutorialmod.chisel": "Use on §l§iIron Block§r to transform it into §l§sDiamond Block§r and vice versa",
+  "tooltip.tutorialmod.frostfire_ice": "Can be used as §6fuel§r. Do §l§nNOT§r eat it!",
+  "tooltip.tutorialmod.starlight_ashes": "Can be used as §6fuel§r. Taste it to feel like a §l§o§n§4GOD§r for a bit, but be careful anyway...",
+
   "creativetab.tutorialmod.bismuth_items": "Bismuth Items",
   "creativetab.tutorialmod.bismuth_blocks": "Bismuth Blocks"
 }

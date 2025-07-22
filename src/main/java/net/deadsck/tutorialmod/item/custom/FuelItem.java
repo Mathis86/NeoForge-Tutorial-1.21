@@ -5,11 +5,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.Nullable;
 
-public class FuelItem extends Item {
+public class FuelItem extends ModToolTipItem {
     private int burnTime = 0;
 
-    public FuelItem(Properties properties, int burnTime) {
-        super(properties);
+    public FuelItem(Properties properties, int burnTime, String itemID) {
+        super(properties, itemID);
         this.burnTime = burnTime;
     }
 

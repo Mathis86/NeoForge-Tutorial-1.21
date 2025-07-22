@@ -3,6 +3,7 @@ package net.deadsck.tutorialmod.block.custom;
 import net.deadsck.tutorialmod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -14,11 +15,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
+import java.util.List;
 import java.util.Map;
 
 public class MagicBlock extends Block {
@@ -55,5 +58,11 @@ public class MagicBlock extends Block {
         }
 
         super.stepOn(level, pos, state, entity);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("tooltip.tutorialmod.magic_block"));
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }
