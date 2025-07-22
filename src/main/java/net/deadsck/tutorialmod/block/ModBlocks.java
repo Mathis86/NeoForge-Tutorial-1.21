@@ -2,6 +2,7 @@ package net.deadsck.tutorialmod.block;
 
 import net.deadsck.tutorialmod.TutorialMod;
 import net.deadsck.tutorialmod.block.custom.BismuthOresBlock;
+import net.deadsck.tutorialmod.block.custom.MagicBlock;
 import net.deadsck.tutorialmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -36,6 +37,12 @@ public class ModBlocks {
                     .strength(5f)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.DEEPSLATE)
+            ));
+
+    public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
+            () -> new MagicBlock(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .sound(SoundType.NETHERRACK)
             ));
 
 

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": { "item": "tutorialmod:bismuth" }
+  },
+  "pattern": [
+    " B ",
+    "BBB",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "tutorialmod:starlight_ashes"
+  }
+}
