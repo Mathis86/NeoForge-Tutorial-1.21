@@ -14,14 +14,22 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.client.extensions.common.IClientMobEffectExtensions;
 import net.neoforged.neoforge.common.EffectCure;
 
 import java.util.Set;
+import java.util.function.Consumer;
 
-public class StarlightAshesEffect extends MobEffect {
+public class StarlightAshesEffect extends MobEffect implements IClientMobEffectExtensions {
     public StarlightAshesEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
+
+    @Override
+    public boolean isVisibleInInventory(MobEffectInstance instance) {
+        return false;
+    }
+
 
     @Override
     public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
@@ -35,10 +43,9 @@ public class StarlightAshesEffect extends MobEffect {
 
             for (int i = 0; i < Math.random() * 4 + 1; i++) {
                 double t = Math.random() * 2 * Math.PI;
-                double dr = Math.random() * (radius - 2) + 2;
 
-                double dx = dr * Math.cos(t);
-                double dz = dr * Math.sin(t);
+                double dx = radius * Math.cos(t);
+                double dz = radius * Math.sin(t);
 
                 Vec3 thunderPos = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, playerPos.offset((int) dx, 0, (int) dz)).getCenter();
 

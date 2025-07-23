@@ -31,6 +31,6 @@ public class ModFoodProperties {
 //            .effect(() -> new MobEffectInstance(MobEffects.JUMP, 30*20, 1), 1f)
 //            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 30*20, 2), 1f)
 //            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 30*20, 2), 1f)
-            .effect(() -> new MobEffectInstance(ModMobEffects.STARLIGHT_ASHES, 10*20, 0, false, false, true), 1f)
+            .effect(() -> new MobEffectInstance(ModMobEffects.STARLIGHT_ASHES, 10*20, 0, false, false, false), 1f)
             .build();
 }
