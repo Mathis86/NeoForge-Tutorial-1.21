@@ -1,6 +1,7 @@
 package net.deadsck.tutorialmod;
 
 import net.deadsck.tutorialmod.block.ModBlocks;
+import net.deadsck.tutorialmod.effect.ModMobEffects;
 import net.deadsck.tutorialmod.item.ModCreativeModeTabs;
 import net.deadsck.tutorialmod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -39,6 +40,7 @@ public class TutorialMod {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModMobEffects.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in.

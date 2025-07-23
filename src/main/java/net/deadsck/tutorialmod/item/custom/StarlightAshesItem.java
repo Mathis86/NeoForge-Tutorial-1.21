@@ -25,37 +25,13 @@ import java.util.Random;
 
 public class StarlightAshesItem extends ModToolTipItem {
     public StarlightAshesItem(Properties properties) {
-        super(properties, "starlight_ashes"); // 40 secondes * 20 ticks
+        super(properties, "starlight_ashes");
     }
 
-    @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-        if (!level.isClientSide() && livingEntity instanceof ServerPlayer player) {
-            int radius = (int) (Math.random() * 6) + 6;
-            int width = (int) (Math.random() * 2) + 2;
-            BlockPos playerPos = player.blockPosition();
-
-            level.playSound(null, player.blockPosition(), SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.WEATHER);
-
-            for (int dr = radius - width / 2; dr < radius + width / 2; dr++) {
-                for (double t = 0; t < 2 * Math.PI; t += 1f / radius) {
-
-                    double dx = dr * Math.cos(t);
-                    double dz = dr * Math.sin(t);
-
-                    BlockPos firePos = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, playerPos.offset((int) dx, 0, (int) dz));
-
-                        level.setBlockAndUpdate(firePos, Blocks.FIRE.defaultBlockState());
-
-                        if (dr == radius) {
-                            LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
-                            lightningBolt.setPos(firePos.getCenter());
-                            level.addFreshEntity(lightningBolt);
-                        }
-                }
-            }
-        }
-
-        return super.finishUsingItem(stack, level, livingEntity);
-    }
+//    @Override
+//    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
+//
+//
+//        return super.finishUsingItem(stack, level, livingEntity);
+//    }
 }
