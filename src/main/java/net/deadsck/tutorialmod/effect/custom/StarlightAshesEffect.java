@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,16 +21,10 @@ import net.neoforged.neoforge.common.EffectCure;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class StarlightAshesEffect extends MobEffect implements IClientMobEffectExtensions {
+public class StarlightAshesEffect extends MobEffect {
     public StarlightAshesEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
-
-    @Override
-    public boolean isVisibleInInventory(MobEffectInstance instance) {
-        return false;
-    }
-
 
     @Override
     public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
@@ -67,8 +62,15 @@ public class StarlightAshesEffect extends MobEffect implements IClientMobEffectE
     public void fillEffectCures(Set<EffectCure> cures, MobEffectInstance effectInstance) {
     }
 
+    // N'est pas re exécuté si l'effet est actif
     @Override
     public void onEffectAdded(LivingEntity livingEntity, int amplifier) {
+        super.onEffectAdded(livingEntity, amplifier);
+    }
+
+    // Est re exécuté même si l'effet est encore actif
+    @Override
+    public void onEffectStarted(LivingEntity livingEntity, int amplifier) {
         Level level = livingEntity.level();
 
         if (!level.isClientSide() && livingEntity instanceof ServerPlayer player) {
@@ -86,17 +88,19 @@ public class StarlightAshesEffect extends MobEffect implements IClientMobEffectE
 
                     BlockPos firePos = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, playerPos.offset((int) dx, 0, (int) dz));
 
-                        level.setBlockAndUpdate(firePos, Blocks.FIRE.defaultBlockState());
+                    level.setBlockAndUpdate(firePos, Blocks.FIRE.defaultBlockState());
 
-                        if (dr == radius) {
-                            LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
-                            lightningBolt.setPos(firePos.getCenter());
-                            level.addFreshEntity(lightningBolt);
-                        }
+                    if (dr == radius) {
+                        LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
+                        lightningBolt.setPos(firePos.getCenter());
+                        level.addFreshEntity(lightningBolt);
+                    }
                 }
             }
         }
 
-        super.onEffectAdded(livingEntity, amplifier);
+        super.onEffectStarted(livingEntity, amplifier);
     }
 }
+
+
