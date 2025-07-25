@@ -1,13 +1,12 @@
 package net.deadsck.tutorialmod.block.custom;
 
 import net.deadsck.tutorialmod.item.ModItems;
+import net.deadsck.tutorialmod.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformFloat;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -44,21 +43,30 @@ public class MagicBlock extends Block {
         );
 
         if (!level.isClientSide() && (entity instanceof ItemEntity itemEntity)) {
-            Item item = itemEntity.getItem().getItem();
-            int stackCount = itemEntity.getItem().getCount();
+            // Variables utiles
+            ItemStack itemStack = itemEntity.getItem();
+            Item item = itemStack.getItem();
+            int stackCount = itemStack.getCount();
             CompoundTag data = itemEntity.getPersistentData();
 
-            if (MAGIC_BLOCK_MAP.containsKey(item) && !data.getBoolean("magic_transformed")) {
-                itemEntity.setItem(new ItemStack(MAGIC_BLOCK_MAP.get(item), stackCount));
+            if (!data.getBoolean("magic_transformed")) {
+                if (MAGIC_BLOCK_MAP.containsKey(item) || isValidItem(itemStack)) {
+                    Item itemToGet = MAGIC_BLOCK_MAP.getOrDefault(item, Items.DIAMOND);
 
-                data.putBoolean("magic_transformed", true);
-                level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 20f, (float) (Math.random() + 1f));
+                    itemEntity.setItem(new ItemStack(itemToGet, stackCount));
+                    level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 20f, (float) (Math.random() + 1f));
+                    data.putBoolean("magic_transformed", true);
+                }
             }
-
         }
 
         super.stepOn(level, pos, state, entity);
     }
+
+    private boolean isValidItem(ItemStack itemStack) {
+        return itemStack.is(ModTags.Items.TRANSFORMABLE_ITEMS);
+    }
+
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {

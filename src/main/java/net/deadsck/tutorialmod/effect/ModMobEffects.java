@@ -1,6 +1,7 @@
 package net.deadsck.tutorialmod.effect;
 
 import net.deadsck.tutorialmod.TutorialMod;
+import net.deadsck.tutorialmod.effect.custom.ChaosTotemEffect;
 import net.deadsck.tutorialmod.effect.custom.StarlightAshesEffect;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -23,6 +24,9 @@ public class ModMobEffects {
                     .addAttributeModifier(Attributes.BLOCK_BREAK_SPEED, ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "starlight_ashes"), -1f, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
                     .addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "starlight_ashes"), 2000f, AttributeModifier.Operation.ADD_VALUE)
     );
+
+    public static final Holder<MobEffect> CHAOS_TOTEM = MOB_EFFECTS.register("chaos_totem", ChaosTotemEffect::new);
+    public static final Holder<MobEffect> CHAOS_TOTEM_SOUNDS = MOB_EFFECTS.register("chaos_totem_sounds", ChaosTotemEffect.Sounds::new);
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

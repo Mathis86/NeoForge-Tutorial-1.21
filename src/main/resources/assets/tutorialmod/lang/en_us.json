@@ -2,6 +2,7 @@
   "item.tutorialmod.bismuth": "Bismuth",
   "item.tutorialmod.raw_bismuth": "Raw Bismuth",
   "item.tutorialmod.chisel": "Chisel",
+  "item.tutorialmod.chaos_totem": "Chaos Totem",
 
   "item.tutorialmod.radish": "Radish",
 
@@ -22,5 +23,6 @@
   "creativetab.tutorialmod.bismuth_items": "Bismuth Items",
   "creativetab.tutorialmod.bismuth_blocks": "Bismuth Blocks",
 
-  "effect.tutorialmod.starlight_ashes": "Starlight Ashes"
+  "effect.tutorialmod.starlight_ashes": "Starlight Ashes",
+  "effect.tutorialmod.chaos_totem": "Chaos"
 }

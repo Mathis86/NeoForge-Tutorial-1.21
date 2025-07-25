@@ -1,6 +1,7 @@
 package net.deadsck.tutorialmod.item;
 
 import net.deadsck.tutorialmod.TutorialMod;
+import net.deadsck.tutorialmod.item.custom.ChaosTotemItem;
 import net.deadsck.tutorialmod.item.custom.ChiselItem;
 import net.deadsck.tutorialmod.item.custom.FrostFireIceItem;
 import net.deadsck.tutorialmod.item.custom.StarlightAshesItem;
@@ -20,6 +21,9 @@ public class ModItems {
 
     public static final DeferredItem<Item> CHISEL = ITEMS.register("chisel",
             () -> new ChiselItem(new Item.Properties().durability(32)));
+
+    public static final DeferredItem<Item> CHAOS_TOTEM = ITEMS.register("chaos_totem",
+            () -> new ChaosTotemItem(new Item.Properties()));
 
     // == FUELS =================================================================================================
     // Voir les burn_time Vanilla : MAJ x2 > AbstractFurnaceBlockEntity

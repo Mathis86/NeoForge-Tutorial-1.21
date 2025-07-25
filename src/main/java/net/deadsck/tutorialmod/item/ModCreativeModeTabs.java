@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BISMUTH);
                         output.accept(ModItems.RAW_BISMUTH);
                         output.accept(ModItems.CHISEL);
+                        output.accept(ModItems.CHAOS_TOTEM);
                         // FOODS
                         output.accept(ModItems.RADISH);
                         // FUELS
